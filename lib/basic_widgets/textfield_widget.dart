@@ -12,11 +12,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text("Contoh TextField")),
-        body: const TextField(
-          obscureText: false,
-          decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Nama',
+        body: const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: TextField(
+            obscureText: false,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Nama',
+            ),
           ),
         ),
       ),

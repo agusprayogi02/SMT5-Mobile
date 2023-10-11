@@ -5,21 +5,10 @@ class MyTextWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          "Nama saya Agus Prayogi",
-          style: TextStyle(color: Colors.red, fontSize: 16),
-          textAlign: TextAlign.center,
-        ),
-        Text(
-          "05",
-          style: TextStyle(color: Colors.red, fontSize: 16),
-          textAlign: TextAlign.center,
-        ),
-      ],
+    return const Text(
+      "Nama saya Agus Prayogi, sedang belajar Pemrograman Mobile",
+      style: TextStyle(color: Colors.red, fontSize: 16),
+      textAlign: TextAlign.center,
     );
   }
 }
