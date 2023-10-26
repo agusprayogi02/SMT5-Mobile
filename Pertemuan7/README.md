@@ -85,6 +85,16 @@ class ButtonSection extends StatelessWidget {
 
 ```
 ![N|Solid](./images/02.png)
+---
+
+## Praktikum 4 : Implementasi image section
+ - tambah code image pada `layout/title_section.dart`
+
+```dart 
+Image.asset('bromo.jpeg'),
+```
+
+ - Code main.dart
 
 ```dart
 class MyApp extends StatelessWidget {
@@ -113,4 +123,5 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+  - Hasil
 ![N|Solid](./images/03.png)
