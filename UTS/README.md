@@ -115,3 +115,231 @@ class ItemPage extends StatelessWidget {
 - ![Hasil Output Program](./images/1.png)
 - Saat di klik salah satu item maka akan menampilkan detail item
 - ![Hasil Output Program](./images/2.png)
+
+## Tugas Praktikum 2
+
+1. Membuat file `shopping_page.dart` untuk menampilkan detail item
+
+```dart
+class ShoppingModel {
+  String image;
+  String name;
+  int price;
+  int stock;
+
+  ShoppingModel({
+    required this.image,
+    required this.name,
+    required this.price,
+    required this.stock,
+  });
+}
+```
+
+2. Membuat file `shopping_page.dart` untuk menampilkan list item
+
+```dart
+
+class ShoppingPage extends StatelessWidget {
+  ShoppingPage({super.key});
+
+  final list = [
+    ShoppingModel(
+      image: 'https://picsum.photos/500?image=1',
+      name: "ROG",
+      price: 15000000,
+      stock: 3,
+    ),
+    ShoppingModel(
+      image: 'https://picsum.photos/500?image=2',
+      name: "Apple",
+      price: 25000000,
+      stock: 5,
+    ),
+    ShoppingModel(
+      image: 'https://picsum.photos/500?image=3',
+      name: "Lenovo",
+      price: 12000000,
+      stock: 10,
+    ),
+    ShoppingModel(
+      image: 'https://picsum.photos/500?image=4',
+      name: "DELL",
+      price: 16000000,
+      stock: 7,
+    ),
+    ShoppingModel(
+      image: 'https://picsum.photos/500?image=5',
+      name: "HP",
+      price: 13000000,
+      stock: 12,
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Shopping Page'),
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            Expanded(
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                ),
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  var item = list[index];
+                  return InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/detail', arguments: item);
+                    },
+                    child: Card(
+                      child: Container(
+                        margin: const EdgeInsets.all(8),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Hero(
+                                tag: item.image,
+                                child: Image.network(
+                                  item.image,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                          child: Text(
+                                        item.name,
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      )),
+                                      Expanded(
+                                        child: Text(
+                                          "Rp.${item.price}",
+                                          textAlign: TextAlign.end,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(
+                                    'Stock: ${item.stock} buah',
+                                    textAlign: TextAlign.end,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Text(
+                'Agus Prayogi / 2141720025 / 05',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+3. Membuat file `detail_page.dart` untuk menampilkan detail item
+
+```dart
+class DetailPage extends StatelessWidget {
+  const DetailPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final item = ModalRoute.of(context)!.settings.arguments as ShoppingModel;
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Detail Item'),
+      ),
+      body: Container(
+        margin: const EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Hero(
+              tag: item.name,
+              child: Image.network(
+                item.image,
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Text(
+                  item.name,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Spacer(),
+                Text(
+                  "Rp.${item.price}",
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Text(
+              "Stok ${item.stock} buah",
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+```
+
+- Hasil Output Program
+- ![Hasil Output Program](./images/3.png)
+- Saat di klik salah satu item maka akan menampilkan detail item
+- ![Hasil Output Program](./images/4.png)

@@ -1,6 +1,9 @@
-import 'package:belanja/pages/home_page.dart';
-import 'package:belanja/pages/item_page.dart';
+import 'package:belanja/pages/detail_page.dart';
 import 'package:flutter/material.dart';
+
+import 'pages/home_page.dart';
+import 'pages/item_page.dart';
+import 'pages/shopping_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +28,9 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (_) => HomePage(),
+        '/shopping': (_) => ShoppingPage(),
         '/item': (_) => const ItemPage(),
+        '/detail': (_) => const DetailPage(),
       },
     );
   }

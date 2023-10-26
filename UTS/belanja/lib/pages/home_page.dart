@@ -45,6 +45,12 @@ class HomePage extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/shopping');
+        },
+        child: const Icon(Icons.shopping_cart),
+      ),
     );
   }
 }
